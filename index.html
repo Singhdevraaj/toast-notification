@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast notification</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/060f14cd54.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="btn">
+
+        <button onclick="showToast(sucessMsg)">Sucess</button>
+        <button onclick="showToast(errorMsg)">Error</button>
+        <button onclick="showToast(invalidMsg)">Invalid</button>
+    </div>
+    <div id="toastBox">
+
+    </div>
+
+    <script>
+
+        let toastBox = document.getElementById('toastBox');
+        let sucessMsg = ' <i class="fa-solid fa-circle-check"></i> Sucessfully Submited';
+        let errorMsg = ' <i class="fa-solid fa-circle-xmark"></i> Please fix the Error';
+        let invalidMsg = ' <i class="fa-solid fa-circle-exclamation"></i> Invalid Input ,check again ';
+
+
+        function showToast(msg) {
+            let toast = document.createElement('div');
+            toast.classList.add('toast');
+            toast.innerHTML = msg;
+            toastBox.appendChild(toast);
+
+            if(msg.includes('Error')){
+                toast.classList.add('error');
+            }
+            if(msg.includes('Invalid')){
+                toast.classList.add('invalid');
+            }
+            setTimeout(()=>{
+                toast.remove();
+            },6000);
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
